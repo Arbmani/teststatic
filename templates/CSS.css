@@ -1,0 +1,41 @@
+html{
+}
+
+* {
+	margin:0;
+	padding:0;
+}
+
+.header {
+  overflow: hidden;
+  background-image: url("csgo.jpg"); 
+  padding: 0px 0px;
+}
+
+body{
+	color: white; 
+	background-image: url("hemsida2.0.gif");
+    
+}
+article {
+	position: fixed; 
+
+    padding-top: 0px;
+
+	
+	
+}
+csgogogo {
+
+	
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-image: url("csgo.jpg");
+   color: white;
+   text-align: left;
+}
