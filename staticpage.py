@@ -18,16 +18,18 @@ class StaticPage(pulumi.ComponentResource):
 
     def __init__(self,
                  name: str,
-                 args: StaticPageArgs,
+                 index_content: StaticPageArgs[0],
+                 template_name: StaticPageArgs[1],
                  opts: Optional[ResourceOptions] = None) -> None:
 
         super().__init__('static-page-component:index:StaticPage', name, {}, opts)
 
-        content_input: pulumi.Input[str] = (
-            args["index_content"]
-            if "index_content" in args and args["index_content"] is not None
-            else get_template(args.get("template_name", "a"))
-        )
+
+        if index_content is not None:
+            content_input = index_content
+        else:
+            tmpl = template_name or "a"
+            content_input = get_template(template_name)
 
 
         # Create a bucket
@@ -47,7 +49,7 @@ class StaticPage(pulumi.ComponentResource):
             f'{name}-index-object',
             bucket=bucket.bucket,
             key='index.html',
-            content=args.get("index_content"),
+            content=template_name,
             content_type='text/html',
             opts=ResourceOptions(parent=bucket))
 
