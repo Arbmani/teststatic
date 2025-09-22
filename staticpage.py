@@ -18,8 +18,8 @@ class StaticPage(pulumi.ComponentResource):
 
     def __init__(self,
                  name: str,
-                 index_content: StaticPageArgs[0],
-                 template_name: StaticPageArgs[1],
+                 template_name: Optional[str] = None,
+                 index_content: Optional[pulumi.Input[str]] = None,
                  opts: Optional[ResourceOptions] = None) -> None:
 
         super().__init__('static-page-component:index:StaticPage', name, {}, opts)
